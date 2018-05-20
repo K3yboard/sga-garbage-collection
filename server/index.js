@@ -152,4 +152,36 @@ router.patch('/documento/:id', (req, res) => {
     `, res);
 });
 
-// 
+// RISCO BIOLOGICO
+
+router.get('/risco-biologico/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID_RISCO_BIOLOGICO=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM risco_biologico' + filter, res);
+});
+
+router.delete('/risco-biologico/:id', (req, res) => {
+    execSQLQuery('DELETE FROM risco_biologico WHERE ID_RISCO_BIOLOGICO=' + parseInt(req.params.id), res);
+});
+
+router.post('/risco-biologico', (req, res) => {
+    const descricao_risco = req.body.descricao_risco.substring(0, 50);
+    const grau_contaminacao = req.body.grau_contaminacao.substring(0, 50);
+    execSQLQuery(`
+        INSERT INTO 
+        risco_biologico(DESCRICAO_RISCO, GRAU_CONTAMINACAO)
+        VALUES('${descricao_risco}','${grau_contaminacao}')
+    `, res);
+});
+
+router.patch('/risco-biologico/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const descricao_risco = req.body.descricao_risco.substring(0, 50);
+    const grau_contaminacao = req.body.grau_contaminacao.substring(0, 50);
+    execSQLQuery(`
+        UPDATE risco_biologico SET 
+        DESCRICAO_RISCO='${descricao_risco}',
+        GRAU_CONTAMINACAO='${grau_contaminacao}'
+        WHERE ID_RISCO_BIOLOGICO=${id}
+    `, res);
+});
