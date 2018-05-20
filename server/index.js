@@ -284,3 +284,37 @@ router.patch('/relacao-material-risco-biologico/:id', (req, res) => {
         WHERE ID_RISCO_MATERIAL=${id}
     `, res);
 });
+
+// LISTA DE MATERIAIS
+
+router.get('/lista-material/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID_LISTA_MATERIAL=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM lista_material' + filter, res);
+});
+
+router.delete('/lista-material/:id', (req, res) => {
+    execSQLQuery('DELETE FROM lista_material WHERE ID_LISTA_MATERIAL=' + parseInt(req.params.id), res);
+});
+
+router.post('/lista-material', (req, res) => {
+    const periodo_geracao_inicio = req.body.periodo_geracao_inicio;
+    const periodo_geracao_fim = req.body.periodo_geracao_fim;
+    execSQLQuery(`
+        INSERT INTO 
+        lista_material(PERIODO_GERACAO_INICIO, PERIODO_GERACAO_FIM)
+        VALUES('${periodo_geracao_inicio}', '${periodo_geracao_fim}')
+    `, res);
+});
+
+router.patch('/lista-material/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const periodo_geracao_inicio = req.body.periodo_geracao_inicio;
+    const periodo_geracao_fim = req.body.periodo_geracao_fim;
+    execSQLQuery(`
+        UPDATE lista_material SET 
+        PERIODO_GERACAO_INICIO='${periodo_geracao_inicio}',
+        PERIODO_GERACAO_FIM='${periodo_geracao_fim}'
+        WHERE ID_LISTA_MATERIAL=${id}
+    `, res);
+});
