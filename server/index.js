@@ -185,3 +185,37 @@ router.patch('/risco-biologico/:id', (req, res) => {
         WHERE ID_RISCO_BIOLOGICO=${id}
     `, res);
 });
+
+// MATERIAL
+
+router.get('/material/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE CODIGO_MATERIAL=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM material' + filter, res);
+});
+
+router.delete('/material/:id', (req, res) => {
+    execSQLQuery('DELETE FROM material WHERE CODIGO_MATERIAL=' + parseInt(req.params.id), res);
+});
+
+router.post('/material', (req, res) => {
+    const nome_material = req.body.nome_material.substring(0, 50);
+    const tipo_material = req.body.tipo_material.substring(0, 50);
+    execSQLQuery(`
+        INSERT INTO 
+        material(NOME_MATERIAL, TIPO_MATERIAL)
+        VALUES('${nome_material}','${tipo_material}')
+    `, res);
+});
+
+router.patch('/material/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const nome_material = req.body.nome_material.substring(0, 50);
+    const tipo_material = req.body.tipo_material.substring(0, 50);
+    execSQLQuery(`
+        UPDATE material SET 
+        NOME_MATERIAL='${nome_material}',
+        TIPO_MATERIAL='${tipo_material}'
+        WHERE CODIGO_MATERIAL=${id}
+    `, res);
+});
