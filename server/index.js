@@ -111,3 +111,45 @@ router.patch('/contrato/:id', (req, res) => {
         WHERE ID_CONTRATO=${id}
     `, res);
 });
+
+// DOCUMENTO
+
+router.get('/documento/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID_DOCUMENTO=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM documento' + filter, res);
+});
+
+router.delete('/documento/:id', (req, res) => {
+    execSQLQuery('DELETE FROM documento WHERE ID_DOCUMENTO=' + parseInt(req.params.id), res);
+});
+
+router.post('/documento', (req, res) => {
+    const tipo_documento = req.body.tipo_documento.substring(0, 50);
+    const nome_documento = req.body.nome_documento.substring(0, 50);
+    const url = req.body.url;
+    const contrato_id_contrato = req.body.contrato_id_contrato;
+    execSQLQuery(`
+        INSERT INTO 
+        documento(TIPO_DOCUMENTO, NOME_DOCUMENTO, URL, CONTRATO_ID_CONTRATO)
+        VALUES('${tipo_documento}','${nome_documento}', '${url}', '${contrato_id_contrato}')
+    `, res);
+});
+
+router.patch('/documento/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const tipo_documento = req.body.tipo_documento.substring(0, 50);
+    const nome_documento = req.body.nome_documento.substring(0, 50);
+    const url = req.body.url;
+    const contrato_id_contrato = req.body.contrato_id_contrato;
+    execSQLQuery(`
+        UPDATE documento SET 
+        TIPO_DOCUMENTO='${tipo_documento}',
+        NOME_DOCUMENTO='${nome_documento}',
+        URL='${url}',
+        CONTRATO_ID_CONTRATO='${contrato_id_contrato}'
+        WHERE ID_DOCUMENTO=${id}
+    `, res);
+});
+
+// 
