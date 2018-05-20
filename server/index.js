@@ -219,3 +219,34 @@ router.patch('/material/:id', (req, res) => {
         WHERE CODIGO_MATERIAL=${id}
     `, res);
 });
+
+// UNIDADE DE MEDIDA
+
+router.get('/unidade-medida/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID_UNIDADE_MEDIDA=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM unidade_medida' + filter, res);
+});
+
+router.delete('/unidade-medida/:id', (req, res) => {
+    execSQLQuery('DELETE FROM unidade_medida WHERE ID_UNIDADE_MEDIDA=' + parseInt(req.params.id), res);
+});
+
+router.post('/unidade-medida', (req, res) => {
+    const descricao = req.body.descricao.substring(0, 50);
+    execSQLQuery(`
+        INSERT INTO 
+        unidade_medida(DESCRICAO)
+        VALUES('${descricao}')
+    `, res);
+});
+
+router.patch('/unidade-medida/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const descricao = req.body.descricao.substring(0, 50);
+    execSQLQuery(`
+        UPDATE unidade_medida SET 
+        DESCRICAO='${descricao}'
+        WHERE ID_UNIDADE_MEDIDA=${id}
+    `, res);
+});
