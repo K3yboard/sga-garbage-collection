@@ -40,3 +40,7 @@ router.get('/clientes/:id?', (req, res) =>{
     if(req.params.id) filter = ' WHERE ID=' + parseInt(req.params.id);
     execSQLQuery('SELECT * FROM Clientes' + filter, res);
 });
+
+router.delete('/clientes/:id', (req, res) =>{
+    execSQLQuery('DELETE FROM Clientes WHERE ID=' + parseInt(req.params.id), res);
+})
