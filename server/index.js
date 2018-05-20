@@ -250,3 +250,37 @@ router.patch('/unidade-medida/:id', (req, res) => {
         WHERE ID_UNIDADE_MEDIDA=${id}
     `, res);
 });
+
+// INSERIR RELAÇÃO DE MATERIAL COM RISCO BIOLOGICO
+
+router.get('/relacao-material-risco-biologico/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID_RISCO_MATERIAL=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM risco_material' + filter, res);
+});
+
+router.delete('/relacao-material-risco-biologico/:id', (req, res) => {
+    execSQLQuery('DELETE FROM risco_material WHERE ID_RISCO_MATERIAL=' + parseInt(req.params.id), res);
+});
+
+router.post('/relacao-material-risco-biologico', (req, res) => {
+    const material_codigo_material = req.body.material_codigo_material;
+    const risco_biologico_id_risco_biologico = req.body.risco_biologico_id_risco_biologico;
+    execSQLQuery(`
+        INSERT INTO 
+        risco_material(MATERIAL_CODIGO_MATERIAL, RISCO_BIOLOGICO_ID_RISCO_BIOLOGICO)
+        VALUES('${material_codigo_material}', '${risco_biologico_id_risco_biologico}')
+    `, res);
+});
+
+router.patch('/relacao-material-risco-biologico/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const material_codigo_material = req.body.material_codigo_material;
+    const risco_biologico_id_risco_biologico = req.body.risco_biologico_id_risco_biologico;
+    execSQLQuery(`
+        UPDATE risco_material SET 
+        MATERIAL_CODIGO_MATERIAL='${material_codigo_material}',
+        RISCO_BIOLOGICO_ID_RISCO_BIOLOGICO='${risco_biologico_id_risco_biologico}'
+        WHERE ID_RISCO_MATERIAL=${id}
+    `, res);
+});
