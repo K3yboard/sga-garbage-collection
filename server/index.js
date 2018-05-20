@@ -15,14 +15,14 @@ app.use('/', router);
 
 //inicia o servidor
 app.listen(port);
-console.log('API funcionando http://localhost:3000/!');
+console.log('API funcionando http://localhost:' + port + '/');
 
 function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
         host     : 'localhost',
         user     : 'root',
         password : '',
-        database : 'test'
+        database : 'sga'
     });
 
     connection.query(sqlQry, function(error, results, fields){
@@ -35,25 +35,40 @@ function execSQLQuery(sqlQry, res) {
     });
 }
 
-router.get('/clientes/:id?', (req, res) => {
+// EMPRESA
+
+router.get('/empresa/:id?', (req, res) => {
     let filter = '';
-    if(req.params.id) filter = ' WHERE ID=' + parseInt(req.params.id);
-    execSQLQuery('SELECT * FROM Clientes' + filter, res);
+    if(req.params.id) filter = ' WHERE ID_EMPRESA=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM empresa' + filter, res);
 });
 
-router.delete('/clientes/:id', (req, res) => {
-    execSQLQuery('DELETE FROM Clientes WHERE ID=' + parseInt(req.params.id), res);
+router.delete('/empresa/:id', (req, res) => {
+    execSQLQuery('DELETE FROM empresa WHERE ID_EMPRESA=' + parseInt(req.params.id), res);
 });
 
-router.post('/clientes', (req, res) => {
-    const nome = req.body.nome.substring(0,150);
-    const cpf = req.body.cpf.substring(0,11);
-    execSQLQuery(`INSERT INTO Clientes(Nome, CPF) VALUES('${nome}','${cpf}')`, res);
+router.post('/empresa', (req, res) => {
+    const nome_empresa = req.body.nome_empresa.substring(0,150);
+    const cnpj_empresa = req.body.cnpj_empresa.substring(0,14);
+    const inscricao_municipal = req.body.inscricao_municipal.substring(0,50);
+    const licensa = req.body.licensa.substring(0,50);
+    execSQLQuery(`
+        INSERT INTO 
+        empresa(NOME_EMPRESA, CNPJ_EMPRESA, INSCRICAO_MUNICIPAL, LICENSA)
+        VALUES('${nome_empresa}','${cnpj_empresa}', '${inscricao_municipal}', '${licensa}')
+    `, res);
 });
 
-router.patch('/clientes/:id', (req, res) =>{
+router.patch('/empresa/:id', (req, res) =>{
     const id = parseInt(req.params.id);
-    const nome = req.body.nome.substring(0,150);
-    const cpf = req.body.cpf.substring(0,11);
-    execSQLQuery(`UPDATE Clientes SET Nome='${nome}', CPF='${cpf}' WHERE ID=${id}`, res);
+    const nome_empresa = req.body.nome_empresa.substring(0,150);
+    const cnpj_empresa = req.body.cnpj_empresa.substring(0,14);
+    execSQLQuery(`
+        UPDATE Clientes SET 
+        NOME_EMPRESA='${nome_empresa}',
+        CNPJ_EMPRESA='${cnpj_empresa}',
+        INSCRICAO_MUNICIPAL='${inscricao_municipal}',
+        LICENSA='${licensa}'
+        WHERE ID_EMPRESA=${id}
+    `, res);
 })
