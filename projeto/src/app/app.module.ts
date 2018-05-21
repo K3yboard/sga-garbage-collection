@@ -6,11 +6,17 @@ import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { FormComponent } from './form/form.component';
+import { EmpresaComponent } from './form/empresa/empresa.component';
+import { RiscoBiologicoComponent } from './form/risco-biologico/risco-biologico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    FormComponent,
+    EmpresaComponent,
+    RiscoBiologicoComponent
   ],
   imports: [
     BrowserModule,

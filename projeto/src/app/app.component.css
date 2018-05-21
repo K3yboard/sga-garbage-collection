@@ -5,3 +5,7 @@ h1 {
   font-size: 34px;
   text-align: center;
 }
+
+header nav {
+  background-color: #17ca90;
+}
