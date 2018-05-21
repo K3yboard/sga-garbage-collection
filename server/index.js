@@ -21,7 +21,7 @@ function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
         host     : 'localhost',
         user     : 'root',
-        password : '',
+        password : '1234qwer',
         database : 'sga'
     });
 
@@ -365,5 +365,64 @@ router.patch('/item-lista/:id', (req, res) => {
         LISTA_MATERIAL_ID_LISTA_MATERIAL='${lista_material_id_lista_material}',
         MATERIAL_CODIGO_MATERIAL='${material_codigo_material}'
         WHERE ID_ITEM=${id}
+    `, res);
+});
+
+// DOCUMENTO
+
+router.get('/descarte-material/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID_DESCARTE_MATERIAL=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM descarte_material' + filter, res);
+});
+
+router.delete('/descarte-material/:id', (req, res) => {
+    execSQLQuery('DELETE FROM descarte_material WHERE ID_DESCARTE_MATERIAL=' + parseInt(req.params.id), res);
+});
+
+router.post('/descarte-material', (req, res) => {
+    const data_descarte = req.body.data_descarte;
+    const local_descarte = req.body.local_descarte;
+    const data_coleta = req.body.data_coleta;
+    const valor_transacao = req.body.valor_transacao;
+    const lista_material_id_lista_material = req.body.lista_material_id_lista_material;
+    const empresa_id_empresa = req.body.empresa_id_empresa;
+    execSQLQuery(`
+        INSERT INTO 
+        descarte_material(
+            DATA_DESCARTE,
+            LOCAL_DESCARTE,
+            DATA_COLETA, 
+            VALOR_TRANSACAO, 
+            LISTA_MATERIAL_ID_LISTA_MATERIAL, 
+            EMPRESA_ID_EMPRESA)
+        VALUES(
+            '${data_descarte}',
+            '${local_descarte}',
+            '${data_coleta}',
+            '${valor_transacao}',
+            '${lista_material_id_lista_material}',
+            '${empresa_id_empresa}'
+        )
+    `, res);
+});
+
+router.patch('/descarte-material/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const data_descarte = req.body.data_descarte;
+    const local_descarte = req.body.local_descarte;
+    const data_coleta = req.body.data_coleta;
+    const valor_transacao = req.body.valor_transacao;
+    const lista_material_id_lista_material = req.body.lista_material_id_lista_material;
+    const empresa_id_empresa = req.body.empresa_id_empresa;
+    execSQLQuery(`
+        UPDATE descarte_material SET 
+        DATA_DESCARTE='${data_descarte}',
+        LOCAL_DESCARTE='${local_descarte}',
+        DATA_COLETA='${data_coleta}', 
+        VALOR_TRANSACAO='${valor_transacao}', 
+        LISTA_MATERIAL_ID_LISTA_MATERIAL='${lista_material_id_lista_material}', 
+        EMPRESA_ID_EMPRESA='${empresa_id_empresa}'
+        WHERE ID_DESCARTE_MATERIAL=${id}
     `, res);
 });
