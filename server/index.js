@@ -318,3 +318,52 @@ router.patch('/lista-material/:id', (req, res) => {
         WHERE ID_LISTA_MATERIAL=${id}
     `, res);
 });
+
+// ITEM DA LISTA
+
+router.get('/item-lista/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID_ITEM=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM item_lista' + filter, res);
+});
+
+router.delete('/item-lista/:id', (req, res) => {
+    execSQLQuery('DELETE FROM item_lista WHERE ID_ITEM=' + parseInt(req.params.id), res);
+});
+
+router.post('/item-lista', (req, res) => {
+    const quantidade_item = req.body.quantidade_item;
+    const unidade_medida_id_unidade_medida = req.body.unidade_medida_id_unidade_medida;
+    const lista_material_id_lista_material = req.body.lista_material_id_lista_material;
+    const material_codigo_material = req.body.material_codigo_material;
+    execSQLQuery(`
+        INSERT INTO 
+        item_lista(
+            QUANTIDADE_ITEM,
+            UNIDADE_MEDIDA_ID_UNIDADE_MEDIDA,
+            LISTA_MATERIAL_ID_LISTA_MATERIAL, 
+            MATERIAL_CODIGO_MATERIAL)
+        VALUES(
+            '${quantidade_item}',
+            '${unidade_medida_id_unidade_medida}',
+            '${lista_material_id_lista_material}',
+            '${material_codigo_material}'
+        )
+    `, res);
+});
+
+router.patch('/item-lista/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const quantidade_item = req.body.quantidade_item;
+    const unidade_medida_id_unidade_medida = req.body.unidade_medida_id_unidade_medida;
+    const lista_material_id_lista_material = req.body.lista_material_id_lista_material;
+    const material_codigo_material = req.body.material_codigo_material;
+    execSQLQuery(`
+        UPDATE item_lista SET 
+        QUANTIDADE_ITEM='${quantidade_item}',
+        UNIDADE_MEDIDA_ID_UNIDADE_MEDIDA='${unidade_medida_id_unidade_medida}',
+        LISTA_MATERIAL_ID_LISTA_MATERIAL='${lista_material_id_lista_material}',
+        MATERIAL_CODIGO_MATERIAL='${material_codigo_material}'
+        WHERE ID_ITEM=${id}
+    `, res);
+});
