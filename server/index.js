@@ -426,3 +426,44 @@ router.patch('/descarte-material/:id', (req, res) => {
         WHERE ID_DESCARTE_MATERIAL=${id}
     `, res);
 });
+
+// ITEM DOCUMENTO DESCARTE
+
+router.get('/item-documento-descarte/:id?', (req, res) => {
+    let filter = '';
+    if(req.params.id) filter = ' WHERE ID_DOCUMENTO_DESCARTE=' + parseInt(req.params.id);
+    execSQLQuery('SELECT * FROM item_documento_descarte' + filter, res);
+});
+
+router.delete('/item-documento-descarte/:id', (req, res) => {
+    execSQLQuery('DELETE FROM item_documento_descarte WHERE ID_DOCUMENTO_DESCARTE=' + parseInt(req.params.id), res);
+});
+
+router.post('/item-documento-descarte', (req, res) => {
+    const documento_id_documento = req.body.documento_id_documento;
+    const descarte_material_id_descarte_material = req.body.descarte_material_id_descarte_material;
+
+    execSQLQuery(`
+        INSERT INTO 
+        item_documento_descarte(
+            DOCUMENTO_ID_DOCUMENTO,
+            DESCARTE_MATERIAL_ID_DESCARTE_MATERIAL)
+        VALUES(
+            '${documento_id_documento}',
+            '${descarte_material_id_descarte_material}'
+        )
+    `, res);
+});
+
+router.patch('/item-documento-descarte/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const documento_id_documento = req.body.documento_id_documento;
+    const descarte_material_id_descarte_material = req.body.descarte_material_id_descarte_material;
+
+    execSQLQuery(`
+        UPDATE item_documento_descarte SET 
+        DOCUMENTO_ID_DOCUMENTO='${documento_id_documento}',
+        DESCARTE_MATERIAL_ID_DESCARTE_MATERIAL='${descarte_material_id_descarte_material}'
+        WHERE ID_DOCUMENTO_DESCARTE=${id}
+    `, res);
+});
