@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Empresa } from '../../model/empresa.model';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-empresa',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaComponent implements OnInit {
 
-  constructor() { }
+  public empresas: Empresa[];
+
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
   }
