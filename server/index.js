@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 
 //definindo as rotas
 const router = express.Router();
-router.get('/', (req, res) => res.json({ message: 'Funcionando!' }));
-app.use('/', router);
+router.get('/api', (req, res) => res.json({ message: 'Funcionando!' }));
+app.use('/api', router);
 
 //inicia o servidor
 app.listen(port);
