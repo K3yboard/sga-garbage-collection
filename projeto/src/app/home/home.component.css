@@ -1,1 +1,61 @@
+table caption {
+  background-color: red;
+  font-size: 25px;
+  color: #fff;
+  padding: 5px;
+}
+.coleta-seletiva .card {
+}
 
+.card dt, dd {
+  padding: 10px;
+  float: left;
+  width: 50%;
+}
+
+.card dt {
+  color: #fff;
+}
+
+.card dd {
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.card:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+dl:nth-child(1) dt {
+  background-color: blue;
+}
+dl:nth-child(2) dt {
+  background-color: red;
+}
+dl:nth-child(3) dt {
+  background-color: green;
+}
+dl:nth-child(4) dt {
+  background-color: yellow;
+  color: #000;
+}
+dl:nth-child(5) dt {
+  background-color: black;
+}
+dl:nth-child(6) dt {
+  background-color: orange;
+}
+dl:nth-child(7) dt {
+  background-color: white;
+  color: #000;
+}
+dl:nth-child(8) dt {
+  background-color: purple;
+}
+dl:nth-child(9) dt {
+  background-color: brown;
+}
+dl:nth-child(10) dt {
+  background-color: gray;
+}
