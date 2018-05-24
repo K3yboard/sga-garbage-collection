@@ -1,0 +1,16 @@
+.empresa {
+  margin-bottom: 5px;
+}
+
+.empresa li {
+  padding: 5px;
+  background-color: #3b8ea7;
+}
+
+.empresa li:last-child {
+  border-bottom: 1px solid #fff;
+}
+
+.empresa:nth-child(odd) li {
+  background-color:#64b99a;
+}
