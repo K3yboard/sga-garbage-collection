@@ -14,6 +14,19 @@ export class EmpresaComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit() {
+    this.buscarEmpresas();
+  }
+
+  buscarEmpresas(): void {
+    this.appService.getEmpresas()
+      .subscribe(
+        (empresa) => {
+          this.empresas = empresa;
+          console.log(this.empresas);
+        },
+        (erro: any) => console.log('Erro para buscar propostas', erro.status),
+        () => console.log('Busca completa')
+      );
   }
 
 }

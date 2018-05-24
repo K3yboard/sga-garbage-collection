@@ -11,14 +11,23 @@ import { Empresa } from './model/empresa.model';
 })
 export class AppService {
 
-  private empresaUrl = 'http://localhost:3000/api/empresa';
+  private empresaUrl = '/api/empresa';
+  private header = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET',
+    'Access-Control-Allow-Origin': '*'
+  };
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) {}
 
   public getEmpresas(): Observable<Empresa[]> {
-    return this.http.get<Empresa[]>(this.empresaUrl);
+    const httpOptions = new HttpHeaders(this.header);
+    // this.messageService.add('AppService: obtendo empresas');
+
+    return this.http.get<Empresa[]>(this.empresaUrl, { headers: httpOptions });
   }
 
   private log(message: string) {
