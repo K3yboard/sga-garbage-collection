@@ -14,6 +14,7 @@ export class AppService {
 
   private empresaUrl = '/api/empresa';
   private materialUrl = '/api/material';
+  private relacaoDescarteUrl = '/api/relacao-descarte';
   private header = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -34,6 +35,10 @@ export class AppService {
 
   public getMateriais(): Observable<Material[]> {
     return this.http.get<Material[]>(this.materialUrl);
+  }
+
+  getDescartes(): any {
+    return this.http.get<any>(this.relacaoDescarteUrl);
   }
 
   private log(message: string) {

@@ -11,11 +11,13 @@ import { Material } from '../model/material.model';
 export class HomeComponent implements OnInit {
 
   materiais: Material[];
+  descartes: any[];
 
   constructor(private appService: AppService) { }
 
   ngOnInit() {
     this.obterMateriais();
+    this.obterRelacaoDeDescartes();
   }
 
   obterMateriais(): void {
@@ -27,6 +29,18 @@ export class HomeComponent implements OnInit {
         },
         (erro) => console.log(erro.status),
         () => console.log('Busca por materiais concluída')
+      );
+  }
+
+  obterRelacaoDeDescartes(): void {
+    this.appService.getDescartes().
+      subscribe(
+        (descartes) => {
+          this.descartes = descartes;
+          console.log(this.descartes);
+        },
+        (erro) => console.log(erro.status),
+        () => console.log('Busca por descartes concluída')
       );
   }
 

@@ -8,16 +8,21 @@
   </head>
   <body>
     <header class="teal lighten-3">
-      <div class="navbar-fixed">
-        <nav>
-          <div class="nav-wrapper">
-            <a routerLink="/" class="brand-logo">SGA - Garbage Collection</a>
-            <ul class="right">
-              <li><a routerLink="/cadastro">Tela de cadastro</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <nav class="nav-extended">
+        <div class="nav-wrapper">
+          <a routerLink="/" class="brand-logo">SGA - Garbage Collection</a>
+          <ul id="nav-mobile">
+            <li><a routerLink="/cadastro">Tela de cadastro</a></li>
+          </ul>
+        </div>
+        <div class="nav-content">
+          <ul class="tabs tabs-transparent">
+            <li class="tab"><a href="#test1">Materiais descartados</a></li>
+            <li class="tab"><a class="active" href="#test2">Descartes</a></li>
+            <li class="tab"><a href="#test4">Empresas</a></li>
+          </ul>
+        </div>
+      </nav>
     </header>
     <div class="main container">
       <router-outlet></router-outlet>
