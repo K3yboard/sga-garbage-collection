@@ -7,5 +7,31 @@ h1 {
 }
 
 header nav {
-  background-color: #17ca90;
+  background-color: #1c70e8;
+}
+
+nav .brand-logo:hover {
+  background-color: #4b4b49;;
+  padding: 0 10px;
+}
+
+.tabs.tabs-transparent {
+  background-color: #4ccfda;
+}
+
+.tabs .tab a:hover {
+  background-color: #4b4b49;
+  border: 1px solid #fff;
+}
+.tabs .tab a.active,
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+  background-color: rgba(0, 255, 106, 0.788);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tabs .tab a {
+  text-decoration: underline;
+  color: #fff;
 }

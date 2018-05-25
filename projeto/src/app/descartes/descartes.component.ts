@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-descartes',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DescartesComponent implements OnInit {
 
-  constructor() { }
+  descartes: any[];
+
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
+    this.obterRelacaoDeDescartes();
+  }
+
+  obterRelacaoDeDescartes(): void {
+    this.appService.getDescartes().
+      subscribe(
+        (descartes) => {
+          this.descartes = descartes;
+          console.log(this.descartes);
+        },
+        (erro) => console.log(erro.status),
+        () => console.log('Busca por descartes concluída')
+      );
   }
 
 }
