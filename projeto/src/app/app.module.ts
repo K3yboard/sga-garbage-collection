@@ -11,6 +11,8 @@ import { FormComponent } from './form/form.component';
 import { EmpresaComponent } from './form/empresa/empresa.component';
 import { RiscoBiologicoComponent } from './form/risco-biologico/risco-biologico.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DescartesComponent } from './descartes/descartes.component';
+import { MateriaisDescartadosComponent } from './materiais-descartados/materiais-descartados.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MessagesComponent } from './messages/messages.component';
     FormComponent,
     EmpresaComponent,
     RiscoBiologicoComponent,
-    MessagesComponent
+    MessagesComponent,
+    DescartesComponent,
+    MateriaisDescartadosComponent
   ],
   imports: [
     BrowserModule,
