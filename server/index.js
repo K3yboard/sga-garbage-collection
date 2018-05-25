@@ -21,7 +21,7 @@ function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
         host     : 'localhost',
         user     : 'root',
-        password : '1234qwer',
+        password : '',
         database : 'sga'
     });
 

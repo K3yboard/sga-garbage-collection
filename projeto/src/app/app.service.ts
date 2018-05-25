@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
 import { Empresa } from './model/empresa.model';
+import { Material } from './model/material.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { Empresa } from './model/empresa.model';
 export class AppService {
 
   private empresaUrl = '/api/empresa';
+  private materialUrl = '/api/material';
   private header = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -28,6 +30,10 @@ export class AppService {
     // this.messageService.add('AppService: obtendo empresas');
 
     return this.http.get<Empresa[]>(this.empresaUrl, { headers: httpOptions });
+  }
+
+  public getMateriais(): Observable<Material[]> {
+    return this.http.get<Material[]>(this.materialUrl);
   }
 
   private log(message: string) {

@@ -5,20 +5,31 @@ table caption {
   padding: 5px;
 }
 .coleta-seletiva .card {
+  display: flex;
+  margin: 0 0 5px 0;
+}
+
+.coleta-seletiva .card > * {
+  flex: 1 100%;
 }
 
 .card dt, dd {
   padding: 10px;
   float: left;
-  width: 50%;
 }
 
 .card dt {
+  width: 35%;
   color: #fff;
 }
 
-.card dd {
+.card dd:nth-of-type(1) {
   border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  width: 45%;
+}
+.card dd:nth-of-type(2) {
+  width: 15%;
 }
 
 .card:after {
@@ -28,34 +39,34 @@ table caption {
 }
 
 dl:nth-child(1) dt {
-  background-color: blue;
+  background-color: #1c70e8;
 }
 dl:nth-child(2) dt {
-  background-color: red;
+  background-color: #da3434;
 }
 dl:nth-child(3) dt {
-  background-color: green;
+  background-color: #09bd09;
 }
 dl:nth-child(4) dt {
-  background-color: yellow;
+  background-color: #e2e206;
   color: #000;
 }
 dl:nth-child(5) dt {
-  background-color: black;
+  background-color: #000;
 }
 dl:nth-child(6) dt {
-  background-color: orange;
+  background-color: #e47c15;
 }
 dl:nth-child(7) dt {
-  background-color: white;
+  background-color: #fff;
   color: #000;
 }
 dl:nth-child(8) dt {
-  background-color: purple;
+  background-color: #8c0b8c;
 }
 dl:nth-child(9) dt {
-  background-color: brown;
+  background-color: #49311c;
 }
 dl:nth-child(10) dt {
-  background-color: gray;
+  background-color: #9a9a9a;
 }

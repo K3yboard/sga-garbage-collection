@@ -5,45 +5,10 @@
         <span class="card-title">Descartes</span>
         <p>Relação de todos os descartes realizados pela empresa.</p>
         <div class="coleta-seletiva black-text">
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
-          </dl>
-          <dl class="card">
-            <dt>teste</dt>
-            <dd>teste</dd>
+          <dl class="card" *ngFor="let material of materiais">
+            <dt>{{ material.TIPO_MATERIAL }}</dt>
+            <dd>{{ material.NOME_MATERIAL }}</dd>
+            <dd></dd>
           </dl>
         </div>
       </div>
