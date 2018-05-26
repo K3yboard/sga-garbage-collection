@@ -1,9 +1,9 @@
 export class Empresa {
 
   constructor(
-    public nome: string,
-    public cnpj: string,
-    public inscricaoMunicipal: string,
+    public nome_empresa: string,
+    public cnpj_empresa: string,
+    public inscricao_municipal: string,
     public licensa: string
   ){}
 }

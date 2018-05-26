@@ -12,33 +12,62 @@ import { Observable } from 'rxjs';
 })
 export class EmpresaFormComponent implements OnInit {
 
-  submitted = false;
+  public empresa: Empresa = new Empresa('', '', '', '');
+  public botao: boolean = true;
 
-  empresa = {
-    nome_empresa: '',
-    cnpj_empresa: '',
-    inscricao_municipal: '',
-    licensa: ''
-  }
+  public nome: string = '';
+  public cnpj: string = '';
+  public inscricao: string = '';
+  public licensa: string = '';
 
   constructor(private appService: AppService) { }
 
   ngOnInit() {
-    // this.empresa;
+  }
+
+  habilitaBotao(): void {
+    if(this.nome != '' && this.cnpj != '' && this.inscricao != '' &&  this.licensa != '') {
+      this.botao = false;
+    } else {
+      this.botao = true;
+    }
+  }
+
+  atualizarNomeEmpresa(nome: string): void {
+    this.nome = nome;
+
+    this.habilitaBotao();
+  }
+
+  atualizarCNPJ(cnpj: string): void {
+    this.cnpj = cnpj;
+    this.habilitaBotao();
+  }
+
+  atualizarInscricao(inscricao: string): void {
+    this.inscricao = inscricao;
+    this.habilitaBotao();
+  }
+
+  atualizarLicensa(licensa: string): void {
+    this.licensa = licensa;
+    this.habilitaBotao();
   }
 
   adicionarEmpresa(empresa: Empresa[]): void {
-    let body = this.empresa;
-    this.appService.postEmpresa(body)
+    this.empresa.nome_empresa = this.nome;
+    this.empresa.cnpj_empresa = this.cnpj;
+    this.empresa.inscricao_municipal = this.inscricao;
+    this.empresa.licensa = this.licensa;
+
+    let body = JSON.stringify(this.empresa);
+    this.botao = true;
+
+    this.appService.postEmpresa(this.empresa)
       .subscribe(
         (empresas) => console.log(empresas),
         (erro) => console.log(erro),
         () => console.log('OK')
       );
   }
-
-  onSubmit() { this.submitted = true; }
-
-  // TODO: Remove this when we're done
-  // get diagnostic() { return JSON.stringify(this.model); }
 }

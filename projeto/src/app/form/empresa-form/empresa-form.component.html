@@ -1,46 +1,54 @@
-<div class="row" [hidden]="submitted">
-  <form (ngSubmit)="onSubmit()" #formEmpresa="ngForm" class="col s12">
+<div class="row">
+  <form #formEmpresa class="col s12">
     <div class="row">
       <div class="input-field col s6">
         <input id="nome-empresa"
           type="text"
           class="validate"
           required
-          [(ngModel)]="empresa.nome_empresa" name="nome" #nome="ngModel">
+          name="nome"
+          (input)="atualizarNomeEmpresa(nome.value)"
+          #nome>
         <label for="nome-empresa">Nome da empresa</label>
-        <p class="error" [hidden]="nome.valid || nome.pristine">Nome é obrigatório</p>
       </div>
       <div class="input-field col s6">
-        <input id="cnpj" type="text" class="validate"
+        <input id="cnpj"
+          type="text"
+          class="validate"
           required
-          [(ngModel)]="empresa.cnpj_empresa" name="cnpj" #cnpj="ngModel">
+          name="cnpj"
+          (input)="atualizarCNPJ(cnpj.value)"
+          #cnpj>
         <label for="cnpj">CNPJ</label>
-        <p class="error" [hidden]="cnpj.valid || cnpj.pristine">CNPJ é obrigatório</p>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input id="inscricao-municipal" type="text" class="validate"
+        <input id="inscricao-municipal"
+          type="text"
+          class="validate"
           required
-          [(ngModel)]="empresa.inscricao_municipal" name="inscricaoMunicipal" #inscricao="ngModel">
+          name="inscricaoMunicipal"
+          (input)="atualizarInscricao(inscricao.value)"
+          #inscricao>
         <label for="inscricao-municipal">Incrição Municipal</label>
-        <p class="error" [hidden]="inscricao.valid || inscricao.pristine">Inscrição Municipal é obrigatório</p>
       </div>
       <div class="input-field col s6">
-        <input id="licensa" type="text" class="validate"
+        <input id="licensa"
+          type="text"
+          class="validate"
           required
-          [(ngModel)]="empresa.licensa" name="licensa" #licensa="ngModel">
+          name="licensa"
+          (input)="atualizarLicensa(licensa.value)"
+          #licensa>
         <label for="licensa">Licensa</label>
-        <p class="error" [hidden]="licensa.valid || licensa.pristine">Licensa é obrigatório</p>
       </div>
     </div>
-    <button class="btn waves-effect waves-light" (click)="adicionarEmpresa()">
-      teste
-    </button>
     <button class="btn waves-effect waves-light"
-      type="submit" name="action"
-      (click)=" novaEmpresa(); formEmpresa.reset()"
-      [disabled]="!formEmpresa.form.valid">Submit
+      type="submit"
+      (click)="adicionarEmpresa(); formEmpresa.reset()"
+      [disabled]="botao"
+    >Submit
       <i class="material-icons right">send</i>
     </button>
   </form>
