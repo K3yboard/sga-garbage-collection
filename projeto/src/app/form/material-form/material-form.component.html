@@ -1,0 +1,33 @@
+<div class="row">
+  <form #formMaterial class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="nome-material"
+          type="text"
+          class="validate"
+          required
+          name="nome"
+          (input)="atualizarNomeMaterial(nome.value)"
+          #nome>
+        <label for="nome-material">Nome do Material</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="tipoMaterial"
+          type="text"
+          class="validate"
+          required
+          name="tipoMaterial"
+          (input)="atualizarTipoMaterial(tipoMaterial.value)"
+          #tipoMaterial>
+        <label for="tipoMaterial">Tipo do Material</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light"
+      type="submit"
+      (click)="salvarMaterial(); formMaterial.reset()"
+      [disabled]="botao"
+    >Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>

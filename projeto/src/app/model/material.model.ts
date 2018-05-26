@@ -1,5 +1,6 @@
 export class Material {
-  CODIGO_MATERIAL: number;
-  NOME_MATERIAL: string;
-  TIPO_MATERIAL: string;
+  constructor(
+    public nome_material: string,
+    public tipo_material: string
+  ) {}
 }

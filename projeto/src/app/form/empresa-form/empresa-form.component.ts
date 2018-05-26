@@ -63,7 +63,7 @@ export class EmpresaFormComponent implements OnInit {
     let body = JSON.stringify(this.empresa);
     this.botao = true;
 
-    this.appService.postEmpresa(this.empresa)
+    this.appService.salvarEmpresa(this.empresa)
       .subscribe(
         (empresas) => console.log(empresas),
         (erro) => console.log(erro),

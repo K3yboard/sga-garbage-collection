@@ -41,8 +41,12 @@ export class AppService {
     return this.http.get<any>(this.relacaoDescarteUrl);
   }
 
-  postEmpresa(empresa: Empresa): Observable<Empresa[]> {
+  salvarEmpresa(empresa: Empresa): Observable<Empresa[]> {
     return this.http.post<Empresa[]>(this.empresaUrl, empresa);
+  }
+
+  salvarMaterial(material: Material): Observable<Material[]> {
+    return this.http.post<Material[]>(this.materialUrl, material);
   }
 
   private log(message: string) {

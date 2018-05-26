@@ -15,6 +15,7 @@
 .card dt {
   width: 35%;
   color: #fff;
+  background-color: #5a5a5a;
 }
 
 .card dd:nth-of-type(1) {
