@@ -41,7 +41,16 @@ export class AppService {
     return this.http.get<any>(this.relacaoDescarteUrl);
   }
 
+  postEmpresa(empresa: Empresa[]): Observable<Empresa[]> {
+    return this.http.post<Empresa[]>(this.empresaUrl, empresa);
+  }
+
   private log(message: string) {
     this.messageService.add('AppService: ' + message);
+  }
+
+  private extractData(res: Response) {
+    let body = res.json();
+    return body || {};
   }
 }

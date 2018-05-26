@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { ROUTES } from './app.routes';
 
@@ -11,6 +12,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { DescartesComponent } from './descartes/descartes.component';
 import { MateriaisDescartadosComponent } from './materiais-descartados/materiais-descartados.component';
 import { EmpresasComponent } from './empresas/empresas.component';
+import { FormComponent } from './form/form.component';
+import { EmpresaFormComponent } from './form/empresa-form/empresa-form.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,14 @@ import { EmpresasComponent } from './empresas/empresas.component';
     MessagesComponent,
     DescartesComponent,
     MateriaisDescartadosComponent,
-    EmpresasComponent
+    EmpresasComponent,
+    FormComponent,
+    EmpresaFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],
