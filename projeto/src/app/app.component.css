@@ -6,33 +6,47 @@ h1 {
   text-align: center;
 }
 
+.brand-logo {
+  transition: all ease-in-out 300ms;
+  min-width: 100%;
+  text-align: center;
+}
+
 header nav {
-  background-color: #1c70e8;
+  background: rgba(223,237,251,1);
+  background: -moz-linear-gradient(-45deg, rgba(223,237,251,1) 0%, rgba(46,157,255,1) 50%, rgba(213,231,251,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(223,237,251,1)), color-stop(50%, rgba(46,157,255,1)), color-stop(100%, rgba(213,231,251,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(223,237,251,1) 0%, rgba(46,157,255,1) 50%, rgba(213,231,251,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(223,237,251,1) 0%, rgba(46,157,255,1) 50%, rgba(213,231,251,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(223,237,251,1) 0%, rgba(46,157,255,1) 50%, rgba(213,231,251,1) 100%);
+  background: linear-gradient(135deg, rgba(223,237,251,1) 0%, rgba(46,157,255,1) 50%, rgba(213,231,251,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfedfb', endColorstr='#d5e7fb', GradientType=1 );
 }
 
 nav .brand-logo:hover {
-  background-color: #4b4b49;;
-  padding: 0 10px;
-}
-
-.tabs.tabs-transparent {
-  background-color: #4ccfda;
+  background: rgba(76,76,76,1);
+  letter-spacing: 2px;
 }
 
 .tabs .tab a:hover {
   background-color: #4b4b49;
-  border: 1px solid #fff;
   color: #fff;
 }
 .tabs .tab a.active,
 .tabs .tab a:focus,
 .tabs .tab a:focus.active {
-  background-color: rgba(0, 255, 106, 0.788);
+  background-color: rgba(19, 251, 155, 0.72);
   font-weight: bold;
   color: #fff;
+  letter-spacing: 3px;
 }
 
 .tabs .tab a {
-  text-decoration: underline;
   color: #000;
+  transition: all linear 200ms;
+}
+
+.nav-content {
+  margin-top: 20px;
+  box-shadow: 0px 1px 1px #000;
 }
