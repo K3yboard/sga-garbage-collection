@@ -15,6 +15,7 @@ import { EmpresasComponent } from './empresas/empresas.component';
 import { FormComponent } from './form/form.component';
 import { EmpresaFormComponent } from './form/empresa-form/empresa-form.component';
 import { MaterialFormComponent } from './form/material-form/material-form.component';
+import { RiscoBiologicoFormComponent } from './form/risco-biologico-form/risco-biologico-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MaterialFormComponent } from './form/material-form/material-form.compon
     EmpresasComponent,
     FormComponent,
     EmpresaFormComponent,
-    MaterialFormComponent
+    MaterialFormComponent,
+    RiscoBiologicoFormComponent
   ],
   imports: [
     BrowserModule,

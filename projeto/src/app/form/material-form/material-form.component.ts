@@ -43,8 +43,6 @@ export class MaterialFormComponent implements OnInit {
   salvarMaterial(material: Material[]): void {
     this.material.nome_material = this.nome;
     this.material.tipo_material = this.tipoMaterial;
-
-    let body = JSON.stringify(this.material);
     this.botao = true;
 
     this.appService.salvarMaterial(this.material)

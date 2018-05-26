@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { Empresa } from './model/empresa.model';
 import { Material } from './model/material.model';
+import { RiscoBiologico } from './model/risco-biologico.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AppService {
 
   private empresaUrl = '/api/empresa';
   private materialUrl = '/api/material';
+  private riscoBiologicolUrl = '/api/risco-biologico';
   private relacaoDescarteUrl = '/api/relacao-descarte';
   private header = {
     'Content-Type': 'application/json',
@@ -47,6 +49,10 @@ export class AppService {
 
   salvarMaterial(material: Material): Observable<Material[]> {
     return this.http.post<Material[]>(this.materialUrl, material);
+  }
+
+  salvarRiscoBiologico(riscoBiologico: RiscoBiologico): Observable<RiscoBiologico[]> {
+    return this.http.post<RiscoBiologico[]>(this.riscoBiologicolUrl, riscoBiologico);
   }
 
   private log(message: string) {
