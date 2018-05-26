@@ -7,7 +7,6 @@ import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { FormComponent } from './form/form.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DescartesComponent } from './descartes/descartes.component';
 import { MateriaisDescartadosComponent } from './materiais-descartados/materiais-descartados.component';
@@ -17,7 +16,6 @@ import { EmpresasComponent } from './empresas/empresas.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    FormComponent,
     MessagesComponent,
     DescartesComponent,
     MateriaisDescartadosComponent,
