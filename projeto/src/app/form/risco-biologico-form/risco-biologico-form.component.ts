@@ -39,7 +39,7 @@ export class RiscoBiologicoFormComponent implements OnInit {
     this.habilitaBotao();
   }
 
-  salvar(riscoBiologico: RiscoBiologico[]): void {
+  salvar(): void {
     this.riscoBiologico.descricao_risco = this.descricao;
     this.riscoBiologico.grau_contaminacao = this.grauContaminacao;
     this.botao = true;
