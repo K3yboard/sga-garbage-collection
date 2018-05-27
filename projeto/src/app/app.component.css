@@ -12,6 +12,14 @@ h1 {
   text-align: center;
 }
 
+.tabs.tabs-transparent {
+  display: flex;
+}
+
+.tabs .tab {
+  flex-grow: 1;
+}
+
 header nav {
   background: rgba(223,237,251,1);
   background: -moz-linear-gradient(-45deg, rgba(223,237,251,1) 0%, rgba(46,157,255,1) 50%, rgba(213,231,251,1) 100%);
