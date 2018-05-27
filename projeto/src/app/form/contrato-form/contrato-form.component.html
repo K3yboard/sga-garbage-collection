@@ -3,24 +3,24 @@
   <form #form class="col s12">
     <div class="row">
       <div class="input-field col s6">
-        <input id="descricao-risco"
+        <input id="data-contrato"
           type="text"
-          class="validate"
+          class="validate datepicker"
           required
-          name="descricao"
-          (input)="atualizarDescricaoRisco(descricao.value)"
-          #descricao>
-        <label for="descricao-risco">Descrição do risco biológico</label>
+          name="dataContrato"
+          (input)="atualizarDataContrato(dataContrato.value)"
+          #dataContrato>
+        <label for="data-contrato">Data do contrato</label>
       </div>
       <div class="input-field col s6">
-        <input id="grauContaminacao"
+        <input id="data-vencimento"
           type="text"
-          class="validate"
+          class="validate datepicker"
           required
-          name="grauContaminacao"
-          (input)="atualizarGrauContaminacao(grauContaminacao.value)"
-          #grauContaminacao>
-        <label for="grauContaminacao">Grau de contaminação</label>
+          name="DataVencimento"
+          (input)="atualizarDataVencimento(DataVencimento.value)"
+          #DataVencimento>
+        <label for="data-vencimento">Data do vencimento do contrato</label>
       </div>
     </div>
     <button class="btn waves-effect waves-light"
