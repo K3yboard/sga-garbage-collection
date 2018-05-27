@@ -3,24 +3,34 @@
   <form #form class="col s12">
     <div class="row">
       <div class="input-field col s6">
-        <input id="descricao-risco"
+        <input id="tipo-documento"
           type="text"
           class="validate"
           required
-          name="descricao"
-          (input)="atualizarDescricaoRisco(descricao.value)"
-          #descricao>
-        <label for="descricao-risco">Descrição do risco biológico</label>
+          name="tipoDocumento"
+          (input)="atualizarTipoDocumento(tipoDocumento.value)"
+          #tipoDocumento>
+        <label for="tipo-documento">Tipo do documento</label>
       </div>
       <div class="input-field col s6">
-        <input id="grauContaminacao"
+        <input id="nome-documento"
           type="text"
           class="validate"
           required
-          name="grauContaminacao"
-          (input)="atualizarGrauContaminacao(grauContaminacao.value)"
-          #grauContaminacao>
-        <label for="grauContaminacao">Grau de contaminação</label>
+          name="nomeDocumento"
+          (input)="atualizarNomeDocumento(nomeDocumento.value)"
+          #nomeDocumento>
+        <label for="nome-documento">Nome do documento</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="url"
+          type="text"
+          class="validate"
+          required
+          name="url"
+          (input)="atualizarUrl(url.value)"
+          #url>
+        <label for="url">URL do documento</label>
       </div>
     </div>
     <button class="btn waves-effect waves-light"

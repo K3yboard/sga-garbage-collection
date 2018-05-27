@@ -21,7 +21,7 @@ export class RiscoBiologicoFormComponent implements OnInit {
   }
 
   habilitaBotao(): void {
-    if(this.descricao != '' && this.grauContaminacao) {
+    if(this.descricao != '' && this.grauContaminacao != '') {
       this.botao = false;
     } else {
       this.botao = true;

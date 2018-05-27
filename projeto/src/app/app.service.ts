@@ -7,6 +7,7 @@ import { MessageService } from './message.service';
 import { Empresa } from './model/empresa.model';
 import { Material } from './model/material.model';
 import { RiscoBiologico } from './model/risco-biologico.model';
+import { Documento } from './model/documento.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AppService {
   private materialUrl = '/api/material';
   private riscoBiologicolUrl = '/api/risco-biologico';
   private relacaoDescarteUrl = '/api/relacao-descarte';
+  private documentoUrl = '/api/documento';
   private header = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -53,6 +55,10 @@ export class AppService {
 
   salvarRiscoBiologico(riscoBiologico: RiscoBiologico): Observable<RiscoBiologico[]> {
     return this.http.post<RiscoBiologico[]>(this.riscoBiologicolUrl, riscoBiologico);
+  }
+
+  salvarDocumento(documento: Documento): Observable<Documento[]> {
+    return this.http.post<Documento[]>(this.documentoUrl, documento);
   }
 
   private log(message: string) {
