@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 // const port = 3000; //porta padrão
 const mysql = require('mysql');
+const path = require('path');
 
 //configurando o body parser para pegar POSTS mais tarde
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,6 +13,10 @@ app.use(express.static(__dirname + '/dist'));
 //definindo as rotas
 const router = express.Router();
 router.get('/api', (req, res) => res.json({ message: 'Funcionando!' }));
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
+
 app.use('/api', router);
 
 //inicia o servidor
