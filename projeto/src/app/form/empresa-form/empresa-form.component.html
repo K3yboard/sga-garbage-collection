@@ -46,8 +46,7 @@
       </div>
     </div>
     <button class="btn waves-effect waves-light"
-      type="submit"
-      (click)="adicionarEmpresa(); formEmpresa.reset()"
+      type="submit" (click)="adicionarEmpresa($event)"
       [disabled]="botao"
     >Salvar
       <i class="material-icons right">send</i>

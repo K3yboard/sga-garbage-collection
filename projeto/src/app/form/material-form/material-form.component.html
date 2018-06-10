@@ -24,8 +24,7 @@
       </div>
     </div>
     <button class="btn waves-effect waves-light"
-      type="submit"
-      (click)="salvarMaterial(); formMaterial.reset()"
+      type="submit" (click)="salvarMaterial($event)"
       [disabled]="botao"
     >Salvar
       <i class="material-icons right">send</i>

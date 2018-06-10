@@ -22,7 +22,7 @@ app.use('/api', router);
 //inicia o servidor
 // app.listen(port);
 app.listen(process.env.PORT || 8080);
-console.log('API funcionando http://localhost:' + port + '/');
+// console.log('API funcionando http://localhost:' + port + '/');
 
 function execSQLQuery(sqlQry, res) {
     const connection = mysql.createConnection({
