@@ -5,10 +5,10 @@
     "ng": "ng",
     "dev": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test teste",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod",
+    "postinstall": "npm install && ng build --aot -prod",
     "start": "node server.js"
   },
   "private": true,
