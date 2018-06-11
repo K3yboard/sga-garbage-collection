@@ -15,12 +15,12 @@ import { Contrato } from './model/contrato.model';
 })
 export class AppService {
 
-  private empresaUrl = '/api/empresa';
-  private materialUrl = '/api/material';
-  private riscoBiologicolUrl = '/api/risco-biologico';
-  private relacaoDescarteUrl = '/api/relacao-descarte';
-  private documentoUrl = '/api/documento';
-  private contratoUrl ='/api/contrato'
+  private empresaUrl = '/empresa';
+  private materialUrl = '/material';
+  private riscoBiologicolUrl = '/risco-biologico';
+  private relacaoDescarteUrl = '/relacao-descarte';
+  private documentoUrl = '/documento';
+  private contratoUrl ='/contrato'
   private header = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Headers': 'Content-Type',

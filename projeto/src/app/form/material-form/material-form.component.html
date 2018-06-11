@@ -1,6 +1,6 @@
 <div class="row">
   <h5>Cadastro de materiais</h5>
-  <form #formMaterial class="col s12">
+  <form #form class="col s12">
     <div class="row">
       <div class="input-field col s6">
         <input id="nome-material"
@@ -24,7 +24,8 @@
       </div>
     </div>
     <button class="btn waves-effect waves-light"
-      type="submit" (click)="salvarMaterial($event)"
+      type="submit"
+      (click)="salvarMaterial($event); form.reset()"
       [disabled]="botao"
     >Salvar
       <i class="material-icons right">send</i>

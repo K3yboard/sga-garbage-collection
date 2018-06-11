@@ -8,16 +8,16 @@ const path = require('path');
 //configurando o body parser para pegar POSTS mais tarde
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/dist/projeto'));
 
 //definindo as rotas
 const router = express.Router();
-router.get('/api', (req, res) => res.json({ message: 'Funcionando!' }));
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
+// router.get('/api', (req, res) => res.json({ message: 'Funcionando!' }));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/projeto/index.html'));
 });
 
-app.use('/api', router);
+app.use('/', router);
 
 //inicia o servidor
 // app.listen(port);
